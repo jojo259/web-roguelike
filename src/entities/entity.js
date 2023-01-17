@@ -1,4 +1,4 @@
-import { canvasContext } from "../game/canvas.js";
+import { gameDraw } from "../game/canvas.js";
 
 export class Entity {
 	constructor({name = "entity", posX = 0, posY = 0}) {
@@ -11,7 +11,7 @@ export class Entity {
 		let spriteImage = new Image();
 		spriteImage.src = `/src/entities/sprites/${this.spriteName}.png`; // why does this have to be absolute
 		spriteImage.onload = () => {
-			canvasContext.drawImage(spriteImage, this.posX * 4 * 16, this.posY * 4 * 16, 4 * spriteImage.width, 4 * spriteImage.height);
+			gameDraw(spriteImage, this.posX, this.posY);
 		}
 		console.log(`drew ${this.name}`);
 	}
