@@ -1,6 +1,6 @@
-import { Entity } from "./entity.js";
+import { Hostile } from "./hostile.js";
 
-export class Slime extends Entity {
+export class Slime extends Hostile {
 	constructor({name = "slime", size = 8, posX = 0, posY = 0}) {
 		super({})
 		this.name = name;

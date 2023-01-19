@@ -1,6 +1,7 @@
 import { entityList } from "./entity-list.js"
 import { Player } from "../entities/player.js"
 import { drawGame } from "./draw-game.js";
+import { doGameTick } from "../main.js";
 
 export let playerEntity = null;
 
@@ -18,7 +19,7 @@ document.onkeypress = function (keyEvent) {
 
 	if (movementKeys.includes(keyEvent.key)) {
 		console.log(`player moved with key ${keyEvent.key}`)
-		
+
 		if (keyEvent.key == "w") {
 			playerEntity.posY--;
 		}
@@ -32,6 +33,7 @@ document.onkeypress = function (keyEvent) {
 			playerEntity.posX++;
 		}
 
+		doGameTick();
 		drawGame();
 	}
 };
