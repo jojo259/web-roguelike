@@ -3,6 +3,8 @@ import { getSprite } from "../game/sprite-manager.js";
 import { randomInt } from "../util.js";
 import { playerEntity } from "../game/player-manager.js";
 import { entityList } from "../game/entity-list.js";
+import { gameMap, mapWidth, mapHeight } from "../game/game-map.js";
+import { tileTypes } from "../game/tile-types.js"
 
 export class Entity {
 	constructor({name = "entity", posX = 0, posY = 0}) {
@@ -29,6 +31,17 @@ export class Entity {
 	attemptMove(dX, dY) {
 		let newX = this.posX + dX;
 		let newY = this.posY + dY;
+
+		if (newX < 0 || newY < 0) {
+			return false;
+		}
+		if (newX >= mapWidth || newY >= mapHeight) {
+			return false;
+		}
+		
+		if (!tileTypes[gameMap[newX][newY]].walkable) {
+			return false;
+		}
 
 		let tileTaken = false;
 
