@@ -1,4 +1,5 @@
 import { gameDraw } from "../game/canvas.js";
+import { getSprite } from "../game/sprite-manager.js";
 
 export class Entity {
 	constructor({name = "entity", posX = 0, posY = 0}) {
@@ -7,12 +8,7 @@ export class Entity {
 		this.posY = posY;
 	}
 
-	drawSprite() {
-		let spriteImage = new Image();
-		spriteImage.src = `/src/entities/sprites/${this.spriteName}.png`; // why does this have to be absolute
-		spriteImage.onload = () => {
-			gameDraw(spriteImage, this.posX, this.posY);
-		}
-		console.log(`drew ${this.name}`);
+	async drawSprite() {
+		gameDraw(await getSprite("src/sprites/" + this.spritePath), this.posX, this.posY);
 	}
 }

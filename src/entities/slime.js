@@ -5,7 +5,7 @@ export class Slime extends Entity {
 		super({})
 		this.name = name;
 		this.size = size;
-		this.spriteName = "slime";
+		this.spritePath = "entity/slime/slime-regular.png";
 		this.posX = posX;
 		this.posY = posY;
 	}
