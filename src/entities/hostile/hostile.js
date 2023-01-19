@@ -9,6 +9,6 @@ export class Hostile extends Entity {
 	}
 
 	doGameTick() {
-		this.moveRandomly();
+		this.moveTowardPlayerDumb();
 	}
 }

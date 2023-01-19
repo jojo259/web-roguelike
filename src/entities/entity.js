@@ -43,4 +43,25 @@ export class Entity {
 				break;
 		}
 	}
+
+	 moveTowardPlayerDumb() {
+	 	let moveOrientation = randomInt(1, 2);
+
+		if (moveOrientation == 1) {
+			if (playerEntity.posX > this.posX) {
+				this.posX++;
+			}
+			else {
+				this.posX--;
+			}
+		}
+		else {
+			if (playerEntity.posY > this.posY) {
+				this.posY++;
+			}
+			else {
+				this.posY--;
+			}
+		}
+	}
 }
