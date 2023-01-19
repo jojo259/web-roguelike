@@ -18,22 +18,25 @@ document.onkeypress = function (keyEvent) {
 	let movementKeys = ["w", "a", "s", "d"];
 
 	if (movementKeys.includes(keyEvent.key)) {
-		console.log(`player moved with key ${keyEvent.key}`)
+		let playerMoved = false;
 
 		if (keyEvent.key == "w") {
-			playerEntity.posY--;
+			playerMoved = playerEntity.attemptMove(0, -1);
 		}
 		else if (keyEvent.key == "s") {
-			playerEntity.posY++;
+			playerMoved = playerEntity.attemptMove(0, 1);
 		}
 		else if (keyEvent.key == "a") {
-			playerEntity.posX--;
+			playerMoved = playerEntity.attemptMove(-1, 0);
 		}
 		else if (keyEvent.key == "d") {
-			playerEntity.posX++;
+			playerMoved = playerEntity.attemptMove(1, 0);
 		}
 
-		doGameTick();
-		drawGame();
+		if (playerMoved) {
+			console.log(`player moved with key ${keyEvent.key}`);
+			doGameTick();
+			drawGame();
+		}
 	}
 };

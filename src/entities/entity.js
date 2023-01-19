@@ -2,6 +2,7 @@ import { gameDraw } from "../game/canvas.js";
 import { getSprite } from "../game/sprite-manager.js";
 import { randomInt } from "../util.js";
 import { playerEntity } from "../game/player-manager.js";
+import { entityList } from "../game/entity-list.js";
 
 export class Entity {
 	constructor({name = "entity", posX = 0, posY = 0}) {
@@ -25,21 +26,42 @@ export class Entity {
 
 	}
 
+	attemptMove(dX, dY) {
+		let newX = this.posX + dX;
+		let newY = this.posY + dY;
+
+		let tileTaken = false;
+
+		for (let curEntity of entityList) {
+			if (curEntity.posX == newX && curEntity.posY == newY) {
+				tileTaken = true;
+				return false;
+			}
+		}
+
+		if (!tileTaken) {
+			this.posX = newX;
+			this.posY = newY;
+		}
+
+		return true;
+	}
+
 	moveRandomly() {
 		let randomMove = randomInt(1, 4);
 
 		switch (randomMove) {
 			case 1:
-				this.posY--;
+				this.attemptMove(0, -1);
 				break;
 			case 2:
-				this.posY++;
+				this.attemptMove(0, 1);
 				break;
 			case 3:
-				this.posX++;
+				this.attemptMove(1, 0);
 				break;
 			case 4:
-				this.posX--;
+				this.attemptMove(-1, 0);
 				break;
 		}
 	}
@@ -49,18 +71,18 @@ export class Entity {
 
 		if (moveOrientation == 1) {
 			if (playerEntity.posX > this.posX) {
-				this.posX++;
+				this.attemptMove(1, 0);
 			}
 			else {
-				this.posX--;
+				this.attemptMove(-1, 0);
 			}
 		}
 		else {
 			if (playerEntity.posY > this.posY) {
-				this.posY++;
+				this.attemptMove(0, 1);
 			}
 			else {
-				this.posY--;
+				this.attemptMove(0, -1);
 			}
 		}
 	}
