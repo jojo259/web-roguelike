@@ -24,6 +24,8 @@ async function drawMap() {
 
 async function drawEntities() {
 	for (let curEntity of entityList) {
-		curEntity.drawSprite();
+		if (curEntity.inPlayerView()) {
+			curEntity.drawSprite();
+		}
 	}
 }
