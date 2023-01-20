@@ -1,5 +1,5 @@
-import { Player } from "../entities/player.js";
-import { Slime } from "../entities/hostile/slime.js";
+import { Player } from "../entities/alive/player.js";
+import { Slime } from "../entities/alive/hostile/slime.js";
 import { randomInt } from "../util.js";
 
 export let entityList = [new Player({posX: 15, posY: 15})];

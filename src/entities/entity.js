@@ -7,10 +7,8 @@ import { gameMap, mapWidth, mapHeight } from "../game/game-map.js";
 import { tileTypes } from "../game/tile-types.js"
 
 export class Entity {
-	constructor({name = "entity", posX = 0, posY = 0}) {
-		this.name = "abc";
-		this.posX = posX;
-		this.posY = posY;
+	constructor({name = "entity"}) {
+		this.name = "entity";
 	}
 
 	async drawSprite() {
@@ -43,19 +41,14 @@ export class Entity {
 			return false;
 		}
 
-		let tileTaken = false;
-
 		for (let curEntity of entityList) {
 			if (curEntity.posX == newX && curEntity.posY == newY) {
-				tileTaken = true;
 				return false;
 			}
 		}
 
-		if (!tileTaken) {
-			this.posX = newX;
-			this.posY = newY;
-		}
+		this.posX = newX;
+		this.posY = newY;
 
 		return true;
 	}

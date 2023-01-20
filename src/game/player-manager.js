@@ -1,5 +1,5 @@
 import { entityList } from "./entity-list.js"
-import { Player } from "../entities/player.js"
+import { Player } from "../entities/alive/player.js"
 import { drawGame } from "./draw-game.js";
 import { doGameTick } from "../main.js";
 

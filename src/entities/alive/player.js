@@ -1,6 +1,6 @@
-import { Entity } from "./entity.js";
+import { Alive } from "./alive.js";
 
-export class Player extends Entity {
+export class Player extends Alive {
 	constructor({posX = 0, posY = 0}) {
 		super({})
 		this.name = "player";
