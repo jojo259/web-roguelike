@@ -26,6 +26,10 @@ export class Entity {
 
 	}
 
+	movedOntoBy(byEntity) {
+		
+	}
+
 	attemptMove(dX, dY) {
 		let newX = this.posX + dX;
 		let newY = this.posY + dY;
@@ -43,7 +47,12 @@ export class Entity {
 
 		for (let curEntity of entityList) {
 			if (curEntity.posX == newX && curEntity.posY == newY) {
-				return false;
+				if (curEntity.movedOntoBy(this)) {
+					return true;
+				}
+				else {
+					return false;
+				}
 			}
 		}
 

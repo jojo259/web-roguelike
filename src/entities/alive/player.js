@@ -7,5 +7,7 @@ export class Player extends Alive {
 		this.spritePath = "entity/player/player-regular.png";
 		this.posX = posX;
 		this.posY = posY;
+		this.health = 20
+		this.damage = 3;
 	}
 }
