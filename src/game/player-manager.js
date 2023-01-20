@@ -20,23 +20,24 @@ document.onkeypress = function (keyEvent) {
 	if (movementKeys.includes(keyEvent.key)) {
 		let playerCompletedAction = false;
 
-		if (keyEvent.key == "w") {
-			playerCompletedAction = playerEntity.attemptMove(0, -1);
-		}
-		else if (keyEvent.key == "s") {
-			playerCompletedAction = playerEntity.attemptMove(0, 1);
-		}
-		else if (keyEvent.key == "a") {
-			playerCompletedAction = playerEntity.attemptMove(-1, 0);
-		}
-		else if (keyEvent.key == "d") {
-			playerCompletedAction = playerEntity.attemptMove(1, 0);
+		switch (keyEvent.key) {
+			case "w":
+				playerCompletedAction = playerEntity.attemptMove(0, -1);
+				break;
+			case "a":
+				playerCompletedAction = playerEntity.attemptMove(-1, 0);
+				break;
+			case "s":
+				playerCompletedAction = playerEntity.attemptMove(0, 1);
+				break;
+			case "d":
+				playerCompletedAction = playerEntity.attemptMove(1, 0);
+				break;
 		}
 
 		if (playerCompletedAction) {
 			console.log(`player moved with key ${keyEvent.key}`);
 			doGameTick();
-			drawGame();
 		}
 	}
 };

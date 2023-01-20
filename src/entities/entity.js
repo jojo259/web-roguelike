@@ -4,10 +4,10 @@ import { randomInt } from "../util.js";
 import { playerEntity } from "../game/player-manager.js";
 import { entityList } from "../game/entity-list.js";
 import { gameMap, mapWidth, mapHeight } from "../game/game-map.js";
-import { tileTypes } from "../game/tile-types.js"
+import { tileTypes } from "../game/tile-types.js";
 
 export class Entity {
-	constructor({name = "entity"}) {
+	constructor({}) {
 		this.name = "entity";
 	}
 
@@ -23,6 +23,10 @@ export class Entity {
 	}
 
 	doGameTick() {
+
+	}
+
+	resetPerTickDrawVariables() {
 
 	}
 

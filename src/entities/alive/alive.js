@@ -1,11 +1,25 @@
 import { Entity } from "../entity.js";
 import { Player } from "./player.js";
 import { entityList } from "../../game/entity-list.js";
+import { drawText, gameDraw } from "../../game/canvas.js";
+import { getSprite } from "../../game/sprite-manager.js";
 
 export class Alive extends Entity {
-	constructor({name = "alive"}) {
-		super({})
-		this.name = name;
+	constructor({}) {
+		super({});
+		this.name = "alive";
+		this.damagedOnLastTick = false;
+	}
+
+	async drawSprite() {
+		super.drawSprite();
+		if (this.damagedOnLastTick) {
+			drawText(this.health, "red", this.posX, this.posY);
+		}
+	}
+
+	resetPerTickDrawVariables() {
+		this.damagedOnLastTick = false;
 	}
 
 	movedOntoBy(byEntity) {
@@ -22,9 +36,11 @@ export class Alive extends Entity {
 		console.log(`${byEntity.name} attacked ${this.name}, now at ${this.health} health`);
 	}
 
-	takeDamage(damage, damageSource) {
-		this.health -= damage;
+	takeDamage(damageNum, damageSource) {
+		this.health -= damageNum;
 		this.checkIfKilledBy(damageSource);
+		this.damagedOnLastTick = true;
+		console.log(`${this.name} took ${damageNum} damage from ${damageSource.name}`);
 	}
 
 	checkIfKilledBy(byEntity) {

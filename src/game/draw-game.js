@@ -10,6 +10,9 @@ export async function drawGame() {
 	clearCanvas();
 	await drawMap();
 	await drawEntities();
+	for (let curEntity of entityList) {
+		curEntity.resetPerTickDrawVariables();
+	}
 }
 
 async function drawMap() {

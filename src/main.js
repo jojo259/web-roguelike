@@ -12,6 +12,7 @@ export function doGameTick() {
 	for (let curEntity of entityList) {
 		curEntity.doGameTick();
 	}
+	drawGame();
 }
 
 drawGame();
