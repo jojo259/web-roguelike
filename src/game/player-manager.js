@@ -5,10 +5,14 @@ import { doGameTick } from "../main.js";
 
 export let playerEntity = null;
 
-for (let curEntity of entityList) {
-	if (curEntity instanceof Player) {
-		playerEntity = curEntity;
-		console.log("bazinga found player entity");
+export function findPlayerEntityIfNotFound() {
+	if (playerEntity == null) {
+		for (let curEntity of entityList) {
+			if (curEntity instanceof Player) {
+				playerEntity = curEntity;
+				console.log("bazinga found player entity");
+			}
+		}
 	}
 }
 

@@ -1,7 +1,7 @@
 import { Entity } from "../entity.js";
 import { Player } from "./player.js";
 import { entityList } from "../../game/entity-list.js";
-import { drawText, gameDraw } from "../../game/canvas.js";
+import { drawText, gameDraw } from "../../game/draw-game.js";
 import { getSprite } from "../../game/sprite-manager.js";
 
 export class Alive extends Entity {

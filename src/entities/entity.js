@@ -1,4 +1,4 @@
-import { gameDraw } from "../game/canvas.js";
+import { drawText, gameDraw } from "../game/draw-game.js";
 import { getSprite } from "../game/sprite-manager.js";
 import { randomInt } from "../util.js";
 import { playerEntity } from "../game/player-manager.js";
