@@ -42,7 +42,7 @@ export function clearCanvas() {
 }
 
 export function gameDraw(drawImg, drawX, drawY) {
-	canvasContext.drawImage(drawImg, (drawX - playerEntity.posX + 5) * canvasScale, (drawY - playerEntity.posY + 3) * canvasScale, canvasScale, canvasScale);
+	canvasContext.drawImage(drawImg, (drawX - playerEntity.posX + 5) * canvasScale, (drawY - playerEntity.posY + 3) * canvasScale, canvasScale + 1, canvasScale + 1);
 }
 
 export function drawText(content, color, drawX, drawY) {
